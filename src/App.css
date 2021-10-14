@@ -1,0 +1,68 @@
+
+.clicker-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.clicker-container .start-text {
+    pointer-events: none;
+    color: #2ebf91;
+    font-size: 1.4em;
+}
+
+.clicker-container .clicker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px rgb(0, 0, 0);
+    min-width: 600px;
+    min-height: 300px;
+    pointer-events: pointer;
+    transition: 300ms ease-in-out;
+}
+
+.clicker-container .clicker:hover {
+    border: solid 1px rgba(58, 115, 168, 0.664);
+}
+
+.clicker-container .stats {
+    display: flex;
+    justify-content: space-between;
+    width: 400px;
+    background: linear-gradient(to top, #8360c3, #2ebf91);
+    gap: 2em;
+    padding: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.clicker-container .stats .timer {
+    background-color: rgba(65, 88, 88, 0.1);
+    padding: 0em 1em;
+}
+
+.clicker-container .stats .amount {
+    background-color: rgba(65, 88, 88, 0.1);
+    padding: 0em 1em;
+}
+
+.clicker-container .stats .clicksPerSec {
+    background-color: rgba(65, 88, 88, 0.1);
+    padding: 0em 1em;
+}
+
+.clicker-container .restartBtn {
+    border: none;
+    background-color: #2ebf91;
+    padding: 0.5em;
+    max-width: 600px;
+    width: 100%;
+    transition: 1s ease;
+}
+
+.clicker-container .restartBtn:hover {
+    background-color: #2ebf919d;
+}
