@@ -3,7 +3,8 @@ import React,{useRef, useState, useEffect} from 'react'
 function Clicker() {
 
     const [clicks, setClicks] = useState(1)
-    let [countDown, setCountDown] = useState(1000)
+    let [seconds ,setSeconds] = useState(1)
+    let [countDown, setCountDown] = useState(seconds * 1000)
     let [clicksPerSec, setClicksPerSec] = useState(0)
     let timer = useRef()
     let [clickBox, setClickBox] = useState(true)
@@ -11,9 +12,13 @@ function Clicker() {
     let [times, setTimes] = useState(true)
 
     useEffect(() => {
-        setClicksPerSec(clicksPerSec = (clicks - 1) / 1)
-    }, [countDown])
+        setCountDown(seconds * 1000)
+    }, [seconds])
 
+    useEffect(() => {
+        setClicksPerSec(clicksPerSec = (clicks - 1) / seconds)
+    }, [countDown])
+   
     function clicksFunc () {
         setText(text = false)
         if (times) {
@@ -21,14 +26,14 @@ function Clicker() {
             setTimes(!times)
         }
         setClicks(clicks + 1)
-        setTimeout(() => {
+        times && setTimeout(() => {
             setText(text = true)
             setClickBox(!clickBox)
-        }, 1000)   
+        }, seconds * 1000)  
     }  
 
     function restart () {
-        setCountDown(1000)
+        setCountDown(seconds * 1000)
         setClicksPerSec(0)
         setTimes(true)
         setClickBox(clickBox = true)
@@ -36,7 +41,7 @@ function Clicker() {
     }
 
     function timerFunc () {
-        timer.current = countDown
+        timer.current = (seconds * 1000)
         let myTimer = setInterval(() => {
             timer.current -= 10
             if (timer.current < 0) {
@@ -47,12 +52,32 @@ function Clicker() {
         },10)
     }
 
+    function sec1 () {
+        setSeconds(seconds = 1)
+    }
+
+    function sec2 () {
+        setSeconds(seconds = 2)
+    }
+
+    function sec3 () {
+        setSeconds(seconds = 3)
+    }
+
+    function sec4 () {
+        setSeconds(seconds = 4)
+    }
+
+    function sec5 () {
+        setSeconds(seconds = 5)
+    }
+
     return (
         <div className='clicker-container'>
 
             <div className='stats'>
                 <div className='timer'><h3>{countDown}ms</h3></div>
-                <div className='clicksPerSec'><h3>{clicksPerSec} Clicks/sec</h3></div>
+                <div className='clicksPerSec'><h3>{clicksPerSec} Clicks/s</h3></div>
                 <div className='amount'><h3>{clicks-1} clicks</h3></div>
             </div>
 
@@ -60,8 +85,19 @@ function Clicker() {
             {clickBox? <div onClick={clicksFunc} className='clicker'>
                 {text? <p className='start-text'>Click here to start</p>: ''}</div>: 
                 <div style={{pointerEvents: 'none'}} className='clicker'></div>}
+            {times?<div className='select'>
+                <button onClick={sec1} className='select-btns'>1 second</button>
+                <button onClick={sec2} className='select-btns'>2 seconds</button>
+                <button onClick={sec3} className='select-btns'>3 seconds</button>
+                <button onClick={sec4} className='select-btns'>4 seconds</button>
+                <button onClick={sec5} className='select-btns'>5 seconds</button>
+            </div>: null}
         </div>
     )
+}
+
+Clicker.defaultProps = {
+    seconds: 1,
 }
 
 export default Clicker
