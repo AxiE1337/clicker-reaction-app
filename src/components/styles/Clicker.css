@@ -6,6 +6,7 @@
     align-items: center;
     height: 100vh;
     width: 100vw;
+    animation: slide-left 1s ease;
 }
 
 .clicker-container .start-text {
@@ -102,6 +103,10 @@
     background-color: #59c2a1;
 }
 
+.select-btns:focus {
+    background-color: #59c2a171;
+}
+
 @keyframes selectAmin {
 
     0% {
@@ -116,6 +121,15 @@
     }
     100% {
         width: 100%;
+    }
+}
+
+@keyframes slide-left {
+    from {
+        transform: translateX(-80%);
+    }
+    to {
+        transform: translateX(0);
     }
 }
 
@@ -164,3 +178,4 @@
         margin-bottom: 0em;
     }
 }
+
