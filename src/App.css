@@ -18,6 +18,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: white;
     border: solid 1px rgb(0, 0, 0);
     width: 50vw;
     min-height: 300px;
@@ -80,15 +81,33 @@
 }
 
 .select {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     margin-top: 2%;
+    height: 40px;
     width: 50vw;
 }
 
-.select .select-btns {
-    
+.select-btns {
+    padding: 10px;
+    width: 100%;
+    background-color: #2ebf91;
     border: none;
+    animation: selectAmin 0.8s ease-in-out;
+    transition: 0.3s ease-in-out;
+}
+
+.select-btns:hover {
+    background-color: #59c2a1;
+}
+
+@keyframes selectAmin {
+
+    0% {
+        z-index: -10;
+        transform: translateY(-50px);
+    }
 }
 
 @keyframes restartBtnAmin {
@@ -97,5 +116,51 @@
     }
     100% {
         width: 100%;
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .clicker-container .stats {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 49vw;
+        height: 18vh;
+        gap: 0em;
+        padding: 0.3em;
+        margin-bottom: 0.4em;
+    }
+    .select {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    .select-btns {
+        height: 4em;
+    }
+}
+
+@media only screen and (max-width:490px) {
+    .clicker-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .clicker-container .stats {
+        padding: 0.2em;
+        margin-bottom: 0em;
+        height: 20vh;
+    }
+    .select {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+        margin-top: 0%;
+    }
+    .select-btns {
+        animation: selectAmin;
+        height: 3em;
+    }
+    .clicker-container .restartBtn {
+        margin-bottom: 0em;
     }
 }
