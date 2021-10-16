@@ -44,6 +44,7 @@ function Reaction() {
             setEnd(true)
             setLose(true)
             setTimeout(() => {
+                timer.current = 0
                 setLose(false)
             }, 2500)
         } else {
