@@ -17,8 +17,8 @@ function Clicker() {
     }, [seconds])
 
     useEffect(() => {
-        setClicksPerSec(clicksPerSec = parseFloat((clicks - 1) / seconds).toFixed(2))
-    }, [countDown])
+        setClicksPerSec(parseFloat((clicks - 1) / seconds).toFixed(2))
+    }, [clicks, seconds])
    
     function clicksFunc () {
         setText(text = false)
