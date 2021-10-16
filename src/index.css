@@ -7,5 +7,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
 
+  background:
+	linear-gradient(
+		rgba(0, 255, 255, 0.3),
+		transparent
+	),
+	linear-gradient(
+		-45deg,
+		rgba(255, 0, 255, 0.4),
+		transparent
+	),
+	linear-gradient(
+		45deg,
+		rgba(255, 255, 0, 0.5),
+		transparent
+	);
+  background-size: 100% 1000%;
+  background-blend-mode: multiply;
+  animation: start-btn-anim 10s ease infinite alternate;
+}

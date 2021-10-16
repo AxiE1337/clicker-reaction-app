@@ -18,6 +18,10 @@
     border: solid 1px black;
 }
 
+.reaction h1 {
+    animation: text-anim 1s ease-in-out;
+}
+
 .reaction .reaction-box {
     width: 30vw;
     height: 30vh;
@@ -37,8 +41,8 @@
     padding: 1em 2em;
     font-size: 1.4em;
     letter-spacing: 3px;
-    animation: start-btn-anim 5s ease-in-out infinite alternate;
-    background: linear-gradient(#12c2e9, #c471ed, #db636b);
+    animation: start-btn-anim 6s ease-in-out infinite alternate;
+    background: linear-gradient(#12c2e9ad, #c471edbe, #db636b);
     background-size: 100% 1000%;
     transition: 0.3s ease;
 }
@@ -53,6 +57,15 @@
     }
     to {
         background-position: 100% 50% ;
+    }
+}
+
+@keyframes text-anim {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }
 

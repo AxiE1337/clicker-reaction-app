@@ -20,18 +20,18 @@ function Reaction() {
             const myTimer = setInterval(() => {
                 timer.current += 10
                 if (timer.current > 1500) {
+                    clearInterval(myTimer)
+                    timer.current = 0
                     if (end) {
-                        timer.current = 0
                         setEnd(true)
                         setTimeout(() => {
                             setBtn(true)
-                        }, 1000)
+                        }, 1500)
                     } else {
                         setTimeout(() => {
                             setBtn(true)
                         }, 1000)
                     }
-                    clearInterval(myTimer)
                 }
             }, 10)
             setBox(true)
@@ -40,14 +40,15 @@ function Reaction() {
 
     function reaction () {
         if (!box) {
+            timer.current = 0
             setEnd(true)
             setLose(true)
             setTimeout(() => {
                 setLose(false)
-            }, 2000)
+            }, 2500)
         } else {
-            setEnd(true)
             setBox(false)
+            setEnd(true)
             setTimeout(() => {
                 setBtn(true)
             }, 2000)
@@ -58,7 +59,7 @@ function Reaction() {
     return (
         <div className='reaction-component'>
             <div className='reaction'>
-                {lose&&<h1>Wait for a green</h1>}
+                {lose&&<h1>Wait for a green quad</h1>}
                 {end && <h1>Reaction time {timer.current} ms</h1>}
                 {!end && <div onClick={reaction} className={activeBox}></div>}
                 {btn? <button onClick={reactionBox} className='start-btn'>Start</button>:''}

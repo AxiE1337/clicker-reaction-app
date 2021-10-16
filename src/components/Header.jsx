@@ -5,7 +5,7 @@ import './styles/Header.css'
 function Header() {
     return (
         <header>
-            <Link to='/clicker'>Clicker</Link>
+            <Link to='/'>Clicker</Link>
             <Link to='/reaction'>Reaction app</Link>
         </header>
     )

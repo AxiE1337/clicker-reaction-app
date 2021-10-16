@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <Header />
         <Switch>
-          <Route exact path="/clicker">
+          <Route exact path="/">
             <Clicker />
           </Route>
           <Route exact path="/reaction">
