@@ -19,23 +19,17 @@ function Reaction() {
         setBox(false)
         setTimeout(() => {
             const myTimer = setInterval(() => {
+                setBox(true)
                 timer.current += 10
                 if (timer.current > 1500) {
                     clearInterval(myTimer)
                     timer.current = 0
-                    if (end) {
-                        setEnd(true)
-                        setTimeout(() => {
-                            setBtn(true)
-                        }, 1500)
-                    } else {
-                        setTimeout(() => {
-                            setBtn(true)
-                        }, 1000)
-                    }
+                    setTimeout(() => {
+                        timer.current = 0
+                        setBtn(true)
+                    }, 1000)
                 } 
             }, 10)
-            setBox(true)
         }, randNum)
     }
 

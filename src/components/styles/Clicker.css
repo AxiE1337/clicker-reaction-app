@@ -192,3 +192,19 @@
     }
 }
 
+@media only screen and (max-height:400px) {
+    .clicker-container {
+        height: 100%;
+        margin-top: 0.5em;
+        overflow: hidden;
+    }
+    .clicker-container .stats {
+        flex-direction: row;
+    }
+    .clicker-container .restartBtn {
+        width: 50vw;
+    }
+
+}
+
+
