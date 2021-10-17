@@ -36,13 +36,15 @@
     justify-content: space-between;
     align-items: center;
     user-select: none;
-    width: 49vw;
+    width: 50vw;
     height: 10vh;
     background: linear-gradient(to top, #8360c3, #2ebf91);
-    gap: 2em;
-    padding: 0.5em;
     margin-bottom: 0.4em;
     transition: 0.3s ease;
+}
+
+.clicker-container .stats h3 {
+    text-align: center;
 }
 
 .clicker-container .stats .timer {
@@ -85,7 +87,6 @@
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr;
     margin-top: 2%;
-    height: 40px;
     width: 50vw;
 }
 
