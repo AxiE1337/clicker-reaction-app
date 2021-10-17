@@ -75,7 +75,7 @@ function Clicker() {
     }
 
     return (
-        <motion.div initial={{translateX: "100%"}} animate={{translateX: "0%"}} exit={{translateX: "-100%"}}>
+        <motion.div initial={{scaleY: 0}} animate={{scaleY: 1}} exit={{scaleY: 0}}>
             <div className='clicker-container'>
 
                 <div className='stats'>
