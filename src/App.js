@@ -3,11 +3,12 @@ import Header from './components/Header';
 import Reaction from './components/Reaction';
 import Footer from './components/Footer';
 import { AnimatePresence } from 'framer-motion';
-import { Route, Switch, useLocation} from 'react-router-dom';
+import { Route, Switch, useLocation, Redirect} from 'react-router-dom';
 
 function App() {
 
   const location = useLocation()
+  console.log(location.pathname);
 
   return (
       <div className="App">
@@ -20,6 +21,7 @@ function App() {
             <Route path="/reaction">
               <Reaction />
             </Route>
+            <Redirect to={location.pathname} />
           </Switch>
         </AnimatePresence>
         <Footer />
