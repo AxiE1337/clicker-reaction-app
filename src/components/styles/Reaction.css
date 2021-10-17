@@ -3,9 +3,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
-    animation: slide-right 1s ease;
 }
 
 .reaction {
@@ -66,15 +65,6 @@
     }
     to {
         opacity: 1;
-    }
-}
-
-@keyframes slide-right {
-    from {
-        transform: translateX(80%);
-    }
-    to {
-        transform: translateX(0);
     }
 }
 

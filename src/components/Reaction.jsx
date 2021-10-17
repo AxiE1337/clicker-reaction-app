@@ -1,5 +1,6 @@
 import React,{useState, useRef} from 'react'
 import './styles/Reaction.css'
+import { motion } from 'framer-motion'
 
 function Reaction() {
 
@@ -32,7 +33,7 @@ function Reaction() {
                             setBtn(true)
                         }, 1000)
                     }
-                }
+                } 
             }, 10)
             setBox(true)
         }, randNum)
@@ -58,14 +59,16 @@ function Reaction() {
     }
 
     return (
-        <div className='reaction-component'>
-            <div className='reaction'>
-                {lose&&<h1>Wait for a green quad</h1>}
-                {end && <h1>Reaction time {timer.current} ms</h1>}
-                {!end && <div onClick={reaction} className={activeBox}></div>}
-                {btn? <button onClick={reactionBox} className='start-btn'>Start</button>:''}
+        <motion.div initial={{translateX: "100%"}} animate={{translateX: "0%"}} exit={{translateX: "-100%"}}>
+            <div className='reaction-component'>
+                <div className='reaction'>
+                    {lose&&<h1>Wait for a green quad</h1>}
+                    {end && <h1>Reaction time {timer.current+' ms'}</h1>}
+                    {!end && <div onClick={reaction} className={activeBox}></div>}
+                    {btn? <button onClick={reactionBox} className='start-btn'>Start</button>:''}
+                </div>
             </div>
-        </div>
+        </motion.div>   
     )
 }
 

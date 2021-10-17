@@ -1,24 +1,29 @@
-// import React,{useState} from 'react';
 import Clicker from './components/Clicker';
 import Header from './components/Header';
 import Reaction from './components/Reaction';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Footer from './components/Footer';
+import { AnimatePresence } from 'framer-motion';
+import { Route, Switch, useLocation} from 'react-router-dom';
 
 function App() {
+
+  const location = useLocation()
+
   return (
-    <Router>
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/">
-            <Clicker />
-          </Route>
-          <Route exact path="/reaction">
-            <Reaction />
-          </Route>
-        </Switch>
+        <AnimatePresence exitBeforeEnter initial={false}>
+          <Switch location={location} key={location.pathname}>
+            <Route exact path="/">
+              <Clicker />
+            </Route>
+            <Route path="/reaction">
+              <Reaction />
+            </Route>
+          </Switch>
+        </AnimatePresence>
+        <Footer />
       </div>
-    </Router>
   );
 }
 

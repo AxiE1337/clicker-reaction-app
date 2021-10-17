@@ -4,9 +4,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 95vh;
     width: 100vw;
-    animation: slide-left 1s ease;
 }
 
 .clicker-container .start-text {
@@ -70,7 +69,7 @@
     user-select: none;
     padding: 0.5em;
     margin-bottom: 0.5em;
-    max-width: 50vw;
+    max-width: 80vw;
     width: 100%;
     transition: 0.3s ease;
     animation: restartBtnAmin 1s ease;
@@ -125,15 +124,6 @@
     }
 }
 
-@keyframes slide-left {
-    from {
-        transform: translateX(-80%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
 @media only screen and (max-width:800px) {
     .clicker-container .stats {
         display: flex;
@@ -170,15 +160,30 @@
         width: 80vw;
         height: 20vh;
     }
+    .clicker-container .stats .timer {
+        background-color: rgba(65, 88, 88, 0.1);
+        padding: 0em 0em;
+    }
+    
+    .clicker-container .stats .amount {
+        background-color: rgba(65, 88, 88, 0.1);
+        padding: 0em 0em;
+    }
+    
+    .clicker-container .stats .clicksPerSec {
+        background-color: rgba(65, 88, 88, 0.1);
+        padding: 0em 0em;
+    }
     .select {
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
         margin-top: 0%;
+        width: 80vw;
     }
     .select-btns {
         animation: selectAmin;
         height: 3em;
-        width: 100%;
+        width: 80vw;
     }
     .clicker-container .restartBtn {
         margin-bottom: 0em;

@@ -1,5 +1,6 @@
 import React,{useRef, useState, useEffect} from 'react'
 import './styles/Clicker.css';
+import { motion } from 'framer-motion'
 
 function Clicker() {
 
@@ -74,26 +75,28 @@ function Clicker() {
     }
 
     return (
-        <div className='clicker-container'>
+        <motion.div initial={{translateX: "100%"}} animate={{translateX: "0%"}} exit={{translateX: "-100%"}}>
+            <div className='clicker-container'>
 
-            <div className='stats'>
-                <div className='timer'><h3>{countDown}ms</h3></div>
-                <div className='clicksPerSec'><h3>{clicksPerSec} Clicks/s</h3></div>
-                <div className='amount'><h3>{clicks-1} clicks</h3></div>
+                <div className='stats'>
+                    <div className='timer'><h3>{countDown}ms</h3></div>
+                    <div className='clicksPerSec'><h3>{clicksPerSec} Clicks/s</h3></div>
+                    <div className='amount'><h3>{clicks-1} clicks</h3></div>
+                </div>
+
+                {!clickBox? <button className='restartBtn' onClick={restart}>Click to restart</button>: null}
+                {clickBox? <div onClick={clicksFunc} className='clicker'>
+                    {text? <p className='start-text'>Click here to start</p>: ''}</div>: 
+                    <div style={{pointerEvents: 'none'}} className='clicker'></div>}
+                {times?<div className='select'>
+                    <button onClick={sec1} className='select-btns'>1 second</button>
+                    <button onClick={sec2} className='select-btns'>2 seconds</button>
+                    <button onClick={sec3} className='select-btns'>3 seconds</button>
+                    <button onClick={sec4} className='select-btns'>4 seconds</button>
+                    <button onClick={sec5} className='select-btns'>5 seconds</button>
+                </div>: null}
             </div>
-
-            {!clickBox? <button className='restartBtn' onClick={restart}>Click to restart</button>: null}
-            {clickBox? <div onClick={clicksFunc} className='clicker'>
-                {text? <p className='start-text'>Click here to start</p>: ''}</div>: 
-                <div style={{pointerEvents: 'none'}} className='clicker'></div>}
-            {times?<div className='select'>
-                <button onClick={sec1} className='select-btns'>1 second</button>
-                <button onClick={sec2} className='select-btns'>2 seconds</button>
-                <button onClick={sec3} className='select-btns'>3 seconds</button>
-                <button onClick={sec4} className='select-btns'>4 seconds</button>
-                <button onClick={sec5} className='select-btns'>5 seconds</button>
-            </div>: null}
-        </div>
+        </motion.div>
     )
 }
 
