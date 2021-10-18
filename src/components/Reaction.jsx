@@ -24,6 +24,8 @@ function Reaction() {
                 if (timer.current > 1500) {
                     clearInterval(myTimer)
                     timer.current = 0
+                    setBox(false)
+                    setEnd(true)
                     setTimeout(() => {
                         timer.current = 0
                         setBtn(true)
