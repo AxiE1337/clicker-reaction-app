@@ -1,31 +1,31 @@
-import Clicker from './components/Clicker';
-import Header from './components/Header';
-import Reaction from './components/Reaction';
-import Footer from './components/Footer';
-import { AnimatePresence } from 'framer-motion';
-import { Route, Switch, useLocation, Redirect} from 'react-router-dom';
+import Clicker from './components/Clicker'
+import Header from './components/Header'
+import Reaction from './components/Reaction'
+import Footer from './components/Footer'
+import { AnimatePresence } from 'framer-motion'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from 'react-router-dom'
 
 function App() {
-
-  const location = useLocation()
-
   return (
-      <div className="App">
+    <div className='App'>
+      <Router>
         <Header />
-        <AnimatePresence exitBeforeEnter initial={false}>
-          <Switch location={location} key={location.pathname}>
-            <Route exact path="/">
-              <Clicker />
-            </Route>
-            <Route path="/reaction">
-              <Reaction />
-            </Route>
-            <Redirect to={location.pathname} />
-          </Switch>
+        <AnimatePresence exitBeforeEnter>
+          <Routes>
+            <Route path='/' element={<Clicker />} />
+            <Route path='/reaction' element={<Reaction />} />
+            <Route path='*' element={<Navigate to='/' />} />
+          </Routes>
         </AnimatePresence>
         <Footer />
-      </div>
-  );
+      </Router>
+    </div>
+  )
 }
 
-export default App;
+export default App

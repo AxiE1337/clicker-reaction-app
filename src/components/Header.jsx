@@ -1,14 +1,20 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './styles/Header.css'
+import { Button } from '@mui/material'
 
 function Header() {
-    return (
-        <header>
-            <Link to='/'>Clicker</Link>
-            <Link to='/reaction'>Reaction app</Link>
-        </header>
-    )
+  const navigate = useNavigate()
+  return (
+    <header>
+      <Button variant='contained' onClick={() => navigate('/')}>
+        Clicker
+      </Button>
+      <Button variant='contained' onClick={() => navigate('/reaction')}>
+        Reaction app
+      </Button>
+    </header>
+  )
 }
 
 export default Header

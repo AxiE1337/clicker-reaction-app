@@ -1,16 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { BrowserRouter as Router} from 'react-router-dom';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import './index.css'
+import { StatsProvider } from './components/context/StatsContext'
+import App from './App'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root'))
+
+root.render(
   <React.StrictMode>
-    <Router>
+    <StatsProvider>
       <App />
-    </Router>
-  </React.StrictMode>,
-  
-  document.getElementById('root')
-);
-
+    </StatsProvider>
+  </React.StrictMode>
+)

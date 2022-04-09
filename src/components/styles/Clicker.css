@@ -1,213 +1,201 @@
-
 .clicker-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 95vh;
+  width: 100vw;
+}
+
+.clicker-container .start-text {
+  user-select: none;
+  pointer-events: none;
+  color: #2ebf91;
+  font-size: 1.4em;
+}
+
+.clicker-container .clicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: solid 1px rgb(0, 0, 0);
+  width: 50vw;
+  min-height: 300px;
+  pointer-events: pointer;
+  transition: 300ms ease-in-out;
+}
+
+.clicker-container .clicker:hover {
+  border: solid 1px rgba(58, 115, 168, 0.664);
+  box-shadow: 5px 5px 0px 0px rgb(104, 221, 182);
+}
+
+.clicker-container .stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+  width: 50vw;
+  height: 10vh;
+  background: linear-gradient(to top, #8360c3, #2ebf91);
+  margin-bottom: 0.4em;
+  transition: 0.3s ease;
+}
+
+.clicker-container .stats h3 {
+  text-align: center;
+}
+
+.clicker-container .stats .timer {
+  width: 100%;
+  background-color: rgba(65, 88, 88, 0.1);
+  padding: 0em 0.5em;
+}
+
+.clicker-container .stats .amount {
+  width: 100%;
+  background-color: rgba(65, 88, 88, 0.1);
+  padding: 0em 0.5em;
+}
+
+.clicker-container .stats .clicksPerSec {
+  width: 100%;
+  background-color: rgba(65, 88, 88, 0.1);
+  padding: 0em 0.5em;
+}
+
+.clicker-container .restartBtn {
+  border: none;
+  background-color: #2ebf91;
+  user-select: none;
+  padding: 0.5em;
+  margin-bottom: 0.5em;
+  max-width: 50vw;
+  width: 100%;
+  transition: 0.3s ease;
+  animation: restartBtnAmin 1s ease;
+}
+
+.clicker-container .restartBtn:hover {
+  background-color: #2ebf919d;
+  box-shadow: 5px 5px 0px 0px #289fed, 10px 10px 0px 0px #5fb8ff,
+    15px 15px 0px 0px #a1d8ff, 20px 20px 0px 0px #cae6ff,
+    25px 25px 0px 0px #e1eeff, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.select {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-top: 2%;
+  width: 50vw;
+  gap: 0.5em;
+  transition: 300ms ease;
+}
+.select button {
+  color: #2ebf91;
+  border-radius: 0;
+}
+.clicker-container h4 {
+  margin-top: 0.5em;
+  user-select: none;
+}
+
+@keyframes selectAmin {
+  0% {
+    z-index: -10;
+    transform: translateY(-50px);
+  }
+}
+
+@keyframes restartBtnAmin {
+  0% {
+    width: 10%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .clicker-container .stats {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 95vh;
-    width: 100vw;
-}
-
-.clicker-container .start-text {
-    user-select: none;
-    pointer-events: none;
-    color: #2ebf91;
-    font-size: 1.4em;
-}
-
-.clicker-container .clicker {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border: solid 1px rgb(0, 0, 0);
-    width: 50vw;
-    min-height: 300px;
-    pointer-events: pointer;
-    transition: 300ms ease-in-out;
-}
-
-.clicker-container .clicker:hover {
-    border: solid 1px rgba(58, 115, 168, 0.664);
-    box-shadow:5px 5px 0px 0px rgb(104, 221, 182);
-}
-
-.clicker-container .stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    user-select: none;
-    width: 50vw;
-    height: 10vh;
-    background: linear-gradient(to top, #8360c3, #2ebf91);
-    margin-bottom: 0.4em;
-    transition: 0.3s ease;
-}
-
-.clicker-container .stats h3 {
     text-align: center;
+    width: 49vw;
+    height: 18vh;
+    gap: 0em;
+    padding: 0.3em;
+    margin-bottom: 0.4em;
+  }
+  .select {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+  .select-btns {
+    height: 4em;
+  }
 }
 
-.clicker-container .stats .timer {
-    width: 100%;
+@media only screen and (max-width: 490px) {
+  .clicker-container {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+  .clicker-container .clicker {
+    width: 80vw;
+  }
+  .clicker-container .stats {
+    padding: 0em;
+    margin-bottom: 0em;
+    width: 80vw;
+    height: 100%;
+  }
+  .clicker-container .stats .timer {
     background-color: rgba(65, 88, 88, 0.1);
-    padding: 0em 0.5em;
-}
+    padding: 0em 0em;
+  }
 
-.clicker-container .stats .amount {
-    width: 100%;
+  .clicker-container .stats .amount {
     background-color: rgba(65, 88, 88, 0.1);
-    padding: 0em 0.5em;
-}
+    padding: 0em 0em;
+  }
 
-.clicker-container .stats .clicksPerSec {
-    width: 100%;
+  .clicker-container .stats .clicksPerSec {
     background-color: rgba(65, 88, 88, 0.1);
-    padding: 0em 0.5em;
+    padding: 0em 0em;
+  }
+  .select {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 0%;
+    width: 80vw;
+  }
+  .select-btns {
+    animation: selectAmin;
+    height: 3em;
+    width: 80vw;
+  }
+  .clicker-container .restartBtn {
+    max-width: 80vw;
+    margin-bottom: 0em;
+  }
 }
 
-.clicker-container .restartBtn {
-    border: none;
-    background-color: #2ebf91;
-    user-select: none;
-    padding: 0.5em;
-    margin-bottom: 0.5em;
+@media only screen and (max-height: 400px) {
+  .clicker-container {
+    height: 100%;
+    margin-top: 0.5em;
+    overflow: hidden;
+  }
+  .clicker-container .stats {
+    flex-direction: row;
+  }
+  .clicker-container .restartBtn {
     max-width: 50vw;
-    width: 100%;
-    transition: 0.3s ease;
-    animation: restartBtnAmin 1s ease;
+  }
 }
-
-.clicker-container .restartBtn:hover {
-    background-color: #2ebf919d;
-    box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 20px 20px 0px 0px #CAE6FF, 25px 25px 0px 0px #E1EEFF, 5px 5px 15px 5px rgba(0,0,0,0);
-}
-
-.select {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
-    margin-top: 2%;
-    width: 50vw;
-}
-
-.select-btns {
-    padding: 10px;
-    width: 100%;
-    background-color: #2ebf91;
-    cursor: pointer;
-    border: none;
-    user-select: none;
-    animation: selectAmin 0.8s ease-in-out;
-    transition: 0.3s ease-in-out;
-}
-
-.select-btns:hover {
-    background-color: #59c2a1;
-}
-
-.select-btns:focus {
-    background-color: #59c2a171;
-}
-
-@keyframes selectAmin {
-
-    0% {
-        z-index: -10;
-        transform: translateY(-50px);
-    }
-}
-
-@keyframes restartBtnAmin {
-    0% {
-        width: 10%;
-    }
-    100% {
-        width: 100%;
-    }
-}
-
-@media only screen and (max-width:800px) {
-    .clicker-container .stats {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 49vw;
-        height: 18vh;
-        gap: 0em;
-        padding: 0.3em;
-        margin-bottom: 0.4em;
-    }
-    .select {
-        grid-template-columns: 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
-    }
-    .select-btns {
-        height: 4em;
-    }
-}
-
-@media only screen and (max-width:490px) {
-    .clicker-container {
-        display: flex;
-        height: 100%;
-        flex-direction: column;
-    }
-    .clicker-container .clicker {
-        width: 80vw;
-    }
-    .clicker-container .stats {
-        padding: 0em;
-        margin-bottom: 0em;
-        width: 80vw;
-        height: 100%;
-    }
-    .clicker-container .stats .timer {
-        background-color: rgba(65, 88, 88, 0.1);
-        padding: 0em 0em;
-    }
-    
-    .clicker-container .stats .amount {
-        background-color: rgba(65, 88, 88, 0.1);
-        padding: 0em 0em;
-    }
-    
-    .clicker-container .stats .clicksPerSec {
-        background-color: rgba(65, 88, 88, 0.1);
-        padding: 0em 0em;
-    }
-    .select {
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-        margin-top: 0%;
-        width: 80vw;
-    }
-    .select-btns {
-        animation: selectAmin;
-        height: 3em;
-        width: 80vw;
-    }
-    .clicker-container .restartBtn {
-        max-width: 80vw;
-        margin-bottom: 0em;
-    }
-}
-
-@media only screen and (max-height:400px) {
-    .clicker-container {
-        height: 100%;
-        margin-top: 0.5em;
-        overflow: hidden;
-    }
-    .clicker-container .stats {
-        flex-direction: row;
-    }
-    .clicker-container .restartBtn {
-        max-width: 50vw;
-    }
-
-}
-
-
