@@ -22,7 +22,7 @@ function Clicker() {
   useEffect(() => {
     setClicksPerSec(parseFloat((clicks - 1) / seconds).toFixed(2))
     updateBestClickTime(parseFloat((clicks - 1) / seconds).toFixed(2))
-  }, [clicks, seconds])
+  }, [clicks, seconds, updateBestClickTime])
 
   function clicksFunc() {
     setText((text = false))
