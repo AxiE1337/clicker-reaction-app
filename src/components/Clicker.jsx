@@ -23,6 +23,7 @@ export default function Clicker() {
       }, 100)
       setTimeout(() => {
         setRestart(true)
+        setCountDown(0)
         return clearInterval(countDown)
       }, seconds * 1000)
     }
