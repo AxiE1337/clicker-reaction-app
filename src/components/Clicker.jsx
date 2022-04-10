@@ -1,78 +1,62 @@
-import React, { useRef, useState, useEffect, useContext } from 'react'
+import React, { useState, useContext } from 'react'
 import './styles/Clicker.css'
 import { StatsContext } from './context/StatsContext'
 import { motion } from 'framer-motion'
-import { Button, Typography } from '@mui/material'
+import { Button, Typography, LinearProgress } from '@mui/material'
 
-function Clicker() {
-  const [clicks, setClicks] = useState(1)
-  let [seconds, setSeconds] = useState(1)
-  let [countDown, setCountDown] = useState(seconds * 1000)
-  let [clicksPerSec, setClicksPerSec] = useState(0)
-  let timer = useRef()
-  let [clickBox, setClickBox] = useState(true)
-  let [text, setText] = useState(true)
-  let [times, setTimes] = useState(true)
+export default function Clicker() {
+  const [clicks, setClicks] = useState(0)
+  const [clicksPerSecond, setClicksPerSecond] = useState(0)
+  const [seconds, setSeconds] = useState(1)
+  const [countDown, setCountDown] = useState(seconds * 1000)
+  const [onePercent, setOnePercent] = useState(countDown / 100)
+  const [isActive, setIsActive] = useState(false)
+  const [restart, setRestart] = useState(false)
   const { bestClickTime, updateBestClickTime } = useContext(StatsContext)
 
-  useEffect(() => {
-    setCountDown(seconds * 1000)
-  }, [seconds])
-
-  useEffect(() => {
-    setClicksPerSec(parseFloat((clicks - 1) / seconds).toFixed(2))
-    updateBestClickTime(parseFloat((clicks - 1) / seconds).toFixed(2))
-  }, [clicks, seconds, updateBestClickTime])
-
-  function clicksFunc() {
-    setText((text = false))
-    if (times) {
-      timerFunc()
-      setTimes(!times)
-    }
-    setClicks(clicks + 1)
-    times &&
+  const startFunction = () => {
+    setIsActive(true)
+    if (!isActive) {
+      setClicks(1)
+      const countDown = setInterval(() => {
+        setCountDown((prev) => prev - 100)
+      }, 100)
       setTimeout(() => {
-        setText((text = true))
-        setClickBox(!clickBox)
+        setRestart(true)
+        return clearInterval(countDown)
       }, seconds * 1000)
+    }
+    if (isActive) {
+      setClicksPerSecond(parseFloat((clicks + 1) / seconds).toFixed(2))
+      setClicks((prev) => prev + 1)
+    }
   }
 
-  function restart() {
+  const restartFunction = () => {
+    setIsActive(false)
+    setRestart(false)
     setCountDown(seconds * 1000)
-    setClicksPerSec(0)
-    setTimes(true)
-    setClickBox((clickBox = true))
-    setClicks(1)
-  }
-
-  function timerFunc() {
-    timer.current = seconds * 1000
-    let myTimer = setInterval(() => {
-      timer.current -= 10
-      if (timer.current < 0) {
-        clearInterval(myTimer)
-      } else {
-        setCountDown((countDown = timer.current))
-      }
-    }, 10)
+    setClicksPerSecond(0)
+    setClicks(0)
+    updateBestClickTime(clicksPerSecond)
   }
 
   const setTimeFunction = (sec) => {
-    setSeconds((seconds = sec))
+    setSeconds(sec)
+    setCountDown(sec * 1000)
+    setOnePercent((sec * 1000) / 100)
   }
 
   const setTimeButtons = [1, 2, 3, 4, 5].map((id) => (
     <Button
       variant='outlined'
-      disabled={!times}
+      disabled={isActive}
       key={id}
       onClick={() => setTimeFunction(id)}
     >
       {id + ' second'}
     </Button>
   ))
-
   return (
     <motion.div
       initial={{ scaleY: 0 }}
@@ -82,37 +66,37 @@ function Clicker() {
       <div className='clicker-container'>
         <div className='stats'>
           <div className='timer'>
-            <h3>{countDown}ms</h3>
+            <h3>{countDown} ms</h3>
+            <LinearProgress
+              variant='determinate'
+              value={countDown / onePercent}
+            />
           </div>
           <div className='clicksPerSec'>
-            <h3>{clicksPerSec} Clicks/s</h3>
+            <h3>{clicksPerSecond} Clicks/s</h3>
           </div>
           <div className='amount'>
-            <h3>{clicks - 1} clicks</h3>
+            <h3>{clicks} clicks</h3>
           </div>
         </div>
 
-        {!clickBox ? (
-          <button className='restartBtn' onClick={restart}>
+        {restart && (
+          <button className='restartBtn' onClick={restartFunction}>
             Click to restart
           </button>
-        ) : null}
-        {clickBox ? (
-          <Button variant='text' onClick={clicksFunc} className='clicker'>
-            {text ? <p className='start-text'>Click here to start</p> : ''}
-          </Button>
-        ) : (
-          <div style={{ pointerEvents: 'none' }} className='clicker'></div>
         )}
+
+        <Button
+          disabled={restart}
+          variant='text'
+          className='clicker'
+          onClick={startFunction}
+        >
+          {!isActive && <p className='start-text'>Click here to start</p>}
+        </Button>
         {<div className='select'>{setTimeButtons}</div>}
         <Typography variant='h4'>Best Clicks/s {bestClickTime}</Typography>
       </div>
     </motion.div>
   )
 }
-
-Clicker.defaultProps = {
-  seconds: 1,
-}
-
-export default Clicker
