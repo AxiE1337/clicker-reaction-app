@@ -15,7 +15,7 @@ function App() {
     <div className='App'>
       <Router>
         <Header />
-        <AnimatePresence exitBeforeEnter>
+        <AnimatePresence mode='wait'>
           <Routes>
             <Route path='/' element={<Clicker />} />
             <Route path='/reaction' element={<Reaction />} />
