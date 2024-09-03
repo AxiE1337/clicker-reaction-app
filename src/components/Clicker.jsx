@@ -51,7 +51,7 @@ export default function Clicker() {
   const setTimeButtons = [1, 2, 3, 4, 5].map((id) => (
     <Button
       variant="outlined"
-      disabled={isActive}
+      disabled={isActive || seconds === id}
       key={id}
       onClick={() => setTimeFunction(id)}
     >
@@ -96,7 +96,10 @@ export default function Clicker() {
           {!isActive && <p className="start-text">Click here to start</p>}
         </Button>
         {<div className="select">{setTimeButtons}</div>}
-        <Typography variant="h4">Best Clicks/s {bestClickTime}</Typography>
+        <Typography variant="h4">
+          Best Clicks/s {bestClickTime}, clicks/m{" "}
+          {Number.parseFloat(bestClickTime * 60).toFixed(0)}
+        </Typography>
       </div>
     </motion.div>
   )
