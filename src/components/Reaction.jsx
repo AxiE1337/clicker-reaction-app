@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect, useContext } from 'react'
-import './styles/Reaction.css'
-import { motion } from 'framer-motion'
-import { StatsContext } from './context/StatsContext'
-import { Typography } from '@mui/material'
+import React, { useState, useRef, useEffect, useContext } from "react"
+import "./styles/Reaction.css"
+import { motion } from "framer-motion"
+import { StatsContext } from "./context/StatsContext"
+import { Typography } from "@mui/material"
 
 function Reaction() {
   const [btn, setBtn] = useState(true)
@@ -12,7 +12,7 @@ function Reaction() {
   const [myTimer, setMyTimer] = useState(null)
   const [randTime, setRandTime] = useState(null)
   const timer = useRef(0)
-  const activeBox = [box ? 'reaction-box-active' : 'reaction-box']
+  const activeBox = [box ? "reaction-box-active" : "reaction-box"]
   const { bestReactionTime, updateReactionStats } = useContext(StatsContext)
 
   function reactionBox() {
@@ -72,25 +72,25 @@ function Reaction() {
       animate={{ scaleY: 1 }}
       exit={{ scaleY: 0 }}
     >
-      <motion.div whileTap={{}} className='reaction-component'>
-        <div className='reaction'>
+      <motion.div className="reaction-component">
+        <div className="reaction">
           {lose && <h1>Wait for a green square</h1>}
-          {end && <h1>Reaction time {timer.current + ' ms'}</h1>}
+          {end && <h1>Reaction time {timer.current + " ms"}</h1>}
           {!end && <div onClick={reaction} className={activeBox}></div>}
           {btn ? (
             <motion.button
               whileHover={{ scale: 1.05 }}
               onClick={reactionBox}
-              className='start-btn'
+              className="start-btn"
             >
               Start
             </motion.button>
           ) : (
-            ''
+            ""
           )}
         </div>
         {end && (
-          <Typography variant='h4'>Best time {bestReactionTime}ms</Typography>
+          <Typography variant="h4">Best time {bestReactionTime}ms</Typography>
         )}
       </motion.div>
     </motion.div>

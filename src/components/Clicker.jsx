@@ -1,8 +1,8 @@
-import React, { useState, useContext } from 'react'
-import './styles/Clicker.css'
-import { StatsContext } from './context/StatsContext'
-import { motion } from 'framer-motion'
-import { Button, Typography, LinearProgress } from '@mui/material'
+import React, { useState, useContext } from "react"
+import "./styles/Clicker.css"
+import { StatsContext } from "./context/StatsContext"
+import { motion } from "framer-motion"
+import { Button, Typography, LinearProgress } from "@mui/material"
 
 export default function Clicker() {
   const [clicks, setClicks] = useState(0)
@@ -50,12 +50,12 @@ export default function Clicker() {
 
   const setTimeButtons = [1, 2, 3, 4, 5].map((id) => (
     <Button
-      variant='outlined'
+      variant="outlined"
       disabled={isActive}
       key={id}
       onClick={() => setTimeFunction(id)}
     >
-      {id + ' second'}
+      {id + " second"}
     </Button>
   ))
   return (
@@ -64,39 +64,39 @@ export default function Clicker() {
       animate={{ scaleY: 1 }}
       exit={{ scaleY: 0 }}
     >
-      <div className='clicker-container'>
-        <div className='stats'>
-          <div className='timer'>
+      <div className="clicker-container">
+        <div className="stats">
+          <div className="timer">
             <h3>{countDown} ms</h3>
             <LinearProgress
-              variant='determinate'
+              variant="determinate"
               value={countDown / onePercent}
             />
           </div>
-          <div className='clicksPerSec'>
+          <div className="clicksPerSec">
             <h3>{clicksPerSecond} Clicks/s</h3>
           </div>
-          <div className='amount'>
+          <div className="amount">
             <h3>{clicks} clicks</h3>
           </div>
         </div>
 
         {restart && (
-          <button className='restartBtn' onClick={restartFunction}>
+          <button className="restartBtn" onClick={restartFunction}>
             Click to restart
           </button>
         )}
 
         <Button
           disabled={restart}
-          variant='text'
-          className='clicker'
+          variant="text"
+          className="clicker"
           onClick={startFunction}
         >
-          {!isActive && <p className='start-text'>Click here to start</p>}
+          {!isActive && <p className="start-text">Click here to start</p>}
         </Button>
-        {<div className='select'>{setTimeButtons}</div>}
-        <Typography variant='h4'>Best Clicks/s {bestClickTime}</Typography>
+        {<div className="select">{setTimeButtons}</div>}
+        <Typography variant="h4">Best Clicks/s {bestClickTime}</Typography>
       </div>
     </motion.div>
   )

@@ -1,6 +1,6 @@
-import { createContext, useState } from 'react'
+import { createContext, useState } from "react"
 
-let localStorageStats = localStorage.getItem('stats')
+let localStorageStats = localStorage.getItem("stats")
 localStorageStats = JSON.parse(localStorageStats) || 0
 
 export const StatsContext = createContext()
@@ -17,24 +17,24 @@ export const StatsProvider = ({ children }) => {
     if (newValue < bestReactionTime) {
       setBestReactionTime(newValue)
       let obj = { bestReactionTime: newValue, bestClickTime: bestClickTime }
-      localStorage.setItem('stats', JSON.stringify(obj))
+      localStorage.setItem("stats", JSON.stringify(obj))
     } else if (bestReactionTime === 0) {
       setBestReactionTime(newValue)
       let obj = { bestReactionTime: newValue, bestClickTime: bestClickTime }
-      localStorage.setItem('stats', JSON.stringify(obj))
+      localStorage.setItem("stats", JSON.stringify(obj))
     }
   }
   const updateBestClickTime = (newValue) => {
-    if (newValue > bestClickTime) {
+    if (Number(newValue) > Number(bestClickTime)) {
       setBestClickTime(newValue)
       let obj = { bestReactionTime: bestReactionTime, bestClickTime: newValue }
-      localStorage.setItem('stats', JSON.stringify(obj))
+      localStorage.setItem("stats", JSON.stringify(obj))
     }
   }
   const resetStats = () => {
     setBestClickTime(0)
     setBestReactionTime(0)
-    localStorage.removeItem('stats')
+    localStorage.removeItem("stats")
   }
   return (
     <StatsContext.Provider
